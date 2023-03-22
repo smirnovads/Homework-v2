@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <list>
+
+using namespace std;
+
+template <typename T1, typename T2>
+vector<T1> replaceOdd(const vector<T1>& v, const list<T2>& l) {
+    vector<T1> res;
+    auto it = l.begin();
+    for (T1 x : v) {
+        if (x % 2 == 0) {
+            res.push_back(x);
+        } else {
+            if (it != l.end()) {
+                res.push_back(*it);
+                ++it;
+            }
+        }
+    }
+    while (it != l.end()) {
+        res.push_back(*it);
+        ++it;
+    }
+    return res;
+}
+
+int main() {
+    vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    list<int> l = {11, 12, 13, 14, 15};
+    cout << "Original vector: ";
+    for (int x : v) {
+        cout << x << " ";
+    }
+    cout << endl;
+    cout << "Original list: ";
+    for (int x : l) {
+        cout << x << " ";
+    }
+    cout << endl;
+    vector<int> res = replaceOdd(v, l);
+    cout << "Result vector: ";
+    for (int x : res) {
+        cout << x << " ";
+    }
+    cout << endl;
+    return 0;
+}

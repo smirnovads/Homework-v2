@@ -1,0 +1,25 @@
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+void addAverage(list<double>& l) {
+    double sum = 0;
+    int count = 0;
+    for (auto it = l.begin(); it != l.end(); it++) {
+        sum += *it;
+        count++;
+    }
+    double average = sum / count;
+    l.push_back(average);
+}
+
+int main() {
+    list<double> l = {1.0, 2.0, 3.0, 4.0, 5.0};
+    addAverage(l);
+    for (auto it = l.begin(); it != l.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+    return 0;
+}

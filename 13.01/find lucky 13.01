@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+using namespace std;
+
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        unordered_map<int, int> freq;
+        for(int num : arr) {
+            freq[num]++;
+        }
+
+        int ans = -1;
+        for(auto& it : freq) {
+            if(it.first == it.second) {
+                ans = max(ans, it.first);
+            }
+        }
+
+        return ans;
+    }
+};
+
+int main() {
+    vector<int> arr = {2,2,3,4};
+    Solution sol;
+    int luckyNum = sol.findLucky(arr);
+    cout << "Largest lucky integer: " << luckyNum << endl;
+
+    return 0;
+}
